@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Wrapper from "./components/wrapper/wrapper";
 import Hero from "./components/hero/hero";
@@ -9,11 +8,14 @@ import roster from "./roster.json";
 
 function App() {
   return (
-    <Wrapper>
-      <Hero/>
-      <Search/>
-      <Table/>
-    </Wrapper>
+    <div>
+      <Hero />
+      <Wrapper>
+        <Search />
+        <Table />
+      </Wrapper>
+    </div>
+
   );
 }
 

@@ -2,7 +2,11 @@ import React from "react";
 import "./search.css";
 
 function Search() {
-  return 
+  return (
+    <div>
+      
+    </div>
+  )
   //JSX goes here
 }
 
