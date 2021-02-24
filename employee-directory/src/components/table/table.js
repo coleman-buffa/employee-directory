@@ -6,11 +6,11 @@ function Table() {
     <table className="hover">
       <thead>
         <tr>
-          <th>Table Header 1</th>
-          <th>Table Header 2</th>
-          <th>Table Header 3</th>
-          <th>Table Header 4</th>
-          <th>Table Header 5</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>DOB</th>
         </tr>
       </thead>
       <tbody>
