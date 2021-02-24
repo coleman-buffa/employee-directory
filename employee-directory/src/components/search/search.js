@@ -4,10 +4,9 @@ import "./search.css";
 function Search() {
   return (
     <div>
-      
+      Search Bar
     </div>
-  )
-  //JSX goes here
+  ); 
 }
 
 export default Search;

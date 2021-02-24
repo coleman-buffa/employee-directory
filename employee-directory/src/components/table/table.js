@@ -3,38 +3,31 @@ import "./table.css";
 
 function Table() {
   return (
-    <table>
+    <table className="hover">
       <thead>
         <tr>
-          <th width="200">Table Header</th>
-          <th>Table Header</th>
-          <th width="150">Table Header</th>
-          <th width="150">Table Header</th>
+          <th>Table Header 1</th>
+          <th>Table Header 2</th>
+          <th>Table Header 3</th>
+          <th>Table Header 4</th>
+          <th>Table Header 5</th>
+
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Content Goes Here</td>
-          <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-          <td>Content Goes Here</td>
-          <td>Content Goes Here</td>
+          {/* Render all table rows with a map function */}
+          <td>Content 1</td>
+          <td>Content 2</td>
+          <td>Content 3</td>
+          <td>Content 4</td>
+          <td>Content 5</td>
         </tr>
-        <tr>
-          <td>Content Goes Here</td>
-          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-          <td>Content Goes Here</td>
-          <td>Content Goes Here</td>
-        </tr>
-        <tr>
-          <td>Content Goes Here</td>
-          <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-          <td>Content Goes Here</td>
-          <td>Content Goes Here</td>
-        </tr>
+
       </tbody>
     </table>
-  )
-  //JSX goes here
+  );
+  
 }
 
 export default Table;
