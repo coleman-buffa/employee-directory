@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
-import Wrapper from "./components/wrapper/wrapper";
+import API from "./utils/API";
+
 import Hero from "./components/hero/hero";
 import Search from "./components/search/search";
 import Table from "./components/table/table";
 
-//Make array of objects here
-
-
 function App() {
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    loadUsers();
+    console.log(users);
+  }, []);
+
+  function loadUsers() {
+    API.getRoster()
+      .then((users) => {
+        setUsers(users);
+      })
+  }
+
   return (
     <div className="App">
-      <Hero />    
+      <Hero />
       <Search />
       <Table />
     </div>
