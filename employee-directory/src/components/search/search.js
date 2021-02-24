@@ -2,8 +2,12 @@ import React from "react";
 import "./search.css";
 
 function Search() {
-  return 
-  //JSX goes here
+  return (
+    <div className="grid-x">
+      <input className="searchBar" type="search" placeholder="Search" />
+    </div>
+
+  );
 }
 
 export default Search;

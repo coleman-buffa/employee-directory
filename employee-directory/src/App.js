@@ -1,19 +1,20 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 import Wrapper from "./components/wrapper/wrapper";
 import Hero from "./components/hero/hero";
 import Search from "./components/search/search";
 import Table from "./components/table/table";
 
-import roster from "./roster.json";
+//Make array of objects here
+
 
 function App() {
   return (
-    <Wrapper>
-      <Hero/>
-      <Search/>
-      <Table/>
-    </Wrapper>
+    <div className="App">
+      <Hero />    
+      <Search />
+      <Table />
+    </div>
   );
 }
 
