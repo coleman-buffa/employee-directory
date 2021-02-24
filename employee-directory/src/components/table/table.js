@@ -11,7 +11,6 @@ function Table() {
           <th>Table Header 3</th>
           <th>Table Header 4</th>
           <th>Table Header 5</th>
-
         </tr>
       </thead>
       <tbody>
