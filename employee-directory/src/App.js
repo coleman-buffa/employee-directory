@@ -11,7 +11,7 @@ function App() {
   const [emps, setEmps] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterEmps, setFilterEmps] = useState([]);
-  const [sortOrder, setSortOrder] = useState("ascending");
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
       loadEmps();  
@@ -47,12 +47,13 @@ function App() {
     if (sort === "descending") {
       setEmps(emps.sort((a,b)=> (a.empname < b.empname ? 1 : -1)));
       setSortOrder("ascending");
-      console.log(emps);
     } else if ( sort === "ascending") {
       setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
       setSortOrder("descending");
-      console.log(emps);
-    }    
+    } else {
+      setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
+      setSortOrder("descending");
+    }
   }
 
   return (
