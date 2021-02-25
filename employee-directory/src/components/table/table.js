@@ -1,7 +1,8 @@
 import React from "react";
 import "./table.css";
+import Row from "../row/row";
 
-function Table() {
+function Table(props) {
   return (
     <table className="hover">
       <thead>
@@ -14,19 +15,19 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {/* Render all table rows with a map function */}
-          <td>Content 1</td>
-          <td>Content 2</td>
-          <td>Content 3</td>
-          <td>Content 4</td>
-          <td>Content 5</td>
-        </tr>
-
+        {props.users.map(emp => (
+          <Row
+            image={emp.image}
+            name={emp.empname}
+            email={emp.email}
+            phone={emp.phone}
+            dob={emp.dob}
+            key={emp.empname}
+          />
+        ))}
       </tbody>
     </table>
   );
-  
 }
 
 export default Table;

@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     loadUsers();
-    console.log(users);
   }, []);
 
   function loadUsers() {
@@ -26,7 +25,9 @@ function App() {
     <div className="App">
       <Hero />
       <Search />
-      <Table />
+      <Table
+        users={users}
+      />
     </div>
   );
 }
