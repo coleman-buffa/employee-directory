@@ -40,6 +40,14 @@ function App() {
     loadEmpsByName();
   };
 
+  const handleSort = event => {
+    console.log(event.target);
+    // Ascending sorting
+    let tempArr = emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1));
+    setEmps(tempArr);
+    console.log(emps);
+  }
+
   return (
     <div className="App">
       <Hero />
@@ -49,6 +57,7 @@ function App() {
       />
       <Table
         filterEmps={filterEmps}
+        handleSort={handleSort}
       />
     </div>
   );
