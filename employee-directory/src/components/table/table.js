@@ -15,7 +15,7 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {props.emps.map(emps => (
+        {props.filterEmps.map(emps => (
           <Row
             image={emps.image}
             name={emps.empname}

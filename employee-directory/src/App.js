@@ -10,6 +10,7 @@ function App() {
 
   const [emps, setEmps] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterEmps, setFilterEmps] = useState([]);
 
   useEffect(() => {
       loadEmps();  
@@ -25,15 +26,17 @@ function App() {
     API.getRoster()
       .then((emps) => {
         setEmps(emps);
+        setFilterEmps(emps);
       })
   };
 
   const loadEmpsByName = () => {
-    setEmps(emps.filter(emp => emp.empname.toLowerCase().includes(searchTerm.toLowerCase())));
+    let tempArr = emps.filter(emp => emp.empname.toLowerCase().includes(searchTerm));
+    setFilterEmps(tempArr);
   };
 
   const handleInputChange = event => {
-    setSearchTerm(event.target.value);
+    setSearchTerm(event.target.value.toLowerCase());
     loadEmpsByName();
   };
 
@@ -45,7 +48,7 @@ function App() {
       results={searchTerm}
       />
       <Table
-        emps={emps}
+        filterEmps={filterEmps}
       />
     </div>
   );
