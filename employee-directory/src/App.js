@@ -9,6 +9,7 @@ import Table from "./components/table/table";
 function App() {
 
   const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     loadUsers();
@@ -21,10 +22,22 @@ function App() {
       })
   }
 
+  function SearchString(str) {
+    //
+  }
+
+  const handleInputChange = event => {
+    setSearchTerm(event.target.value);
+    console.log(searchTerm);
+  }
+
   return (
     <div className="App">
       <Hero />
-      <Search />
+      <Search 
+      handleInputChange={handleInputChange}
+      results={searchTerm}
+      />
       <Table
         users={users}
       />
