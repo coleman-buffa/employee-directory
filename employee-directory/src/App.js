@@ -8,25 +8,66 @@ import Table from "./components/table/table";
 
 function App() {
 
-  const [users, setUsers] = useState([]);
+  const [emps, setEmps] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterEmps, setFilterEmps] = useState([]);
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
-    loadUsers();
-    console.log(users);
+      loadEmps();  
   }, []);
 
-  function loadUsers() {
+  useEffect(() => {
+    if (searchTerm) {
+      loadEmpsByName();
+    }    
+  }, [searchTerm]);
+
+  const loadEmps = () => {
     API.getRoster()
-      .then((users) => {
-        setUsers(users);
+      .then((emps) => {
+        setEmps(emps);
+        setFilterEmps(emps);
       })
+  };
+
+  const loadEmpsByName = () => {
+    let tempArr = emps.filter(emp => emp.empname.toLowerCase().includes(searchTerm));
+    setFilterEmps(tempArr);
+  };
+
+  const handleInputChange = event => {
+    setSearchTerm(event.target.value.toLowerCase());
+    loadEmpsByName();
+  };
+
+  const handleSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.empname < b.empname ? 1 : -1)));
+      setSortOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
+      setSortOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
+      setSortOrder("descending");
+    }
   }
 
   return (
     <div className="App">
       <Hero />
-      <Search />
-      <Table />
+      <Search 
+      handleInputChange={handleInputChange}
+      results={searchTerm}
+      />
+      <Table
+        filterEmps={filterEmps}
+        handleSort={handleSort}
+        sortOrder={sortOrder}
+      />
     </div>
   );
 }

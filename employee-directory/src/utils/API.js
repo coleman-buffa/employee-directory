@@ -7,12 +7,14 @@ export default {
       axios.get("https://randomuser.me/api/?results=50").then((res) => {
         const users = res.data.results;
         const results = users.map((user) => {
+          //Format date to exlude extra information
+          const DOB = user.dob.date.split('T');
           return {
             image: user.picture.thumbnail,
-            name: `${user.name.first} ${user.name.last}`,
+            empname: `${user.name.first} ${user.name.last}`,
             phone: user.phone,
             email: user.email,
-            dob: user.dob.date            
+            dob: DOB[0]            
           };
         });
         resolve(results);

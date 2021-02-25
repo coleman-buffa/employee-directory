@@ -1,32 +1,33 @@
 import React from "react";
 import "./table.css";
+import Row from "../row/row";
 
-function Table() {
+function Table(props) {
   return (
     <table className="hover">
       <thead>
         <tr>
           <th>Image</th>
-          <th>Name</th>
+          <th onClick={props.handleSort} data-value={props.sortOrder}>Name</th>
           <th>Phone</th>
           <th>Email</th>
           <th>DOB</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {/* Render all table rows with a map function */}
-          <td>Content 1</td>
-          <td>Content 2</td>
-          <td>Content 3</td>
-          <td>Content 4</td>
-          <td>Content 5</td>
-        </tr>
-
+        {props.filterEmps.map(emps => (
+          <Row
+            image={emps.image}
+            name={emps.empname}
+            email={emps.email}
+            phone={emps.phone}
+            dob={emps.dob}
+            key={emps.empname}
+          />
+        ))}
       </tbody>
     </table>
   );
-  
 }
 
 export default Table;
