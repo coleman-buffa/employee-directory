@@ -8,28 +8,34 @@ import Table from "./components/table/table";
 
 function App() {
 
-  const [users, setUsers] = useState([]);
+  const [emps, setEmps] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    loadUsers();
+      loadEmps();  
   }, []);
 
-  function loadUsers() {
-    API.getRoster()
-      .then((users) => {
-        setUsers(users);
-      })
-  }
+  useEffect(() => {
+    if (searchTerm) {
+      loadEmpsByName();
+    }    
+  }, [searchTerm]);
 
-  function SearchString(str) {
-    //
-  }
+  const loadEmps = () => {
+    API.getRoster()
+      .then((emps) => {
+        setEmps(emps);
+      })
+  };
+
+  const loadEmpsByName = () => {
+    setEmps(emps.filter(emp => emp.empname.toLowerCase().includes(searchTerm.toLowerCase())));
+  };
 
   const handleInputChange = event => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
-  }
+    loadEmpsByName();
+  };
 
   return (
     <div className="App">
@@ -39,7 +45,7 @@ function App() {
       results={searchTerm}
       />
       <Table
-        users={users}
+        emps={emps}
       />
     </div>
   );

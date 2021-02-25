@@ -15,14 +15,14 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {props.users.map(emp => (
+        {props.emps.map(emps => (
           <Row
-            image={emp.image}
-            name={emp.empname}
-            email={emp.email}
-            phone={emp.phone}
-            dob={emp.dob}
-            key={emp.empname}
+            image={emps.image}
+            name={emps.empname}
+            email={emps.email}
+            phone={emps.phone}
+            dob={emps.dob}
+            key={emps.empname}
           />
         ))}
       </tbody>
