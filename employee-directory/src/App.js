@@ -12,7 +12,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterEmps, setFilterEmps] = useState([]);
   const [nameOrder, setNameOrder] = useState("");
-  //Add additional states to track sorting of each field
+  const [phoneOrder, setPhoneOrder] = useState("");
 
   useEffect(() => {
       loadEmps();  
@@ -57,6 +57,21 @@ function App() {
     }
   }
 
+  const handlePhoneSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.phone < b.phone ? 1 : -1)));
+      setPhoneOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.phone > b.phone ? 1 : -1)));
+      setPhoneOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.phone > b.phone ? 1 : -1)));
+      setPhoneOrder("descending");
+    }
+  }
+
   return (
     <div className="App">
       <Hero />
@@ -66,8 +81,10 @@ function App() {
       />
       <Table
         filterEmps={filterEmps}
-        handleNameSort={handleNameSort}
         nameOrder={nameOrder}
+        handleNameSort={handleNameSort}        
+        phoneOrder={phoneOrder}
+        handlePhoneSort={handlePhoneSort}
       />
     </div>
   );

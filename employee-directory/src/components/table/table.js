@@ -9,7 +9,7 @@ function Table(props) {
         <tr>
           <th>Image</th>
           <th className="name-header" onClick={props.handleNameSort} data-value={props.nameOrder}>Name <i className="fas fa-sort"></i></th>
-          <th>Phone</th>
+          <th className="phone-header" onClick={props.handlePhoneSort} data-value={props.phoneOrder}>Phone <i className="fas fa-sort"></i></th>
           <th>Email</th>
           <th>DOB</th>
         </tr>
