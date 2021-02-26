@@ -13,6 +13,7 @@ function App() {
   const [filterEmps, setFilterEmps] = useState([]);
   const [nameOrder, setNameOrder] = useState("");
   const [phoneOrder, setPhoneOrder] = useState("");
+  const [emailOrder, setEmailOrder] = useState("");
 
   useEffect(() => {
       loadEmps();  
@@ -72,6 +73,21 @@ function App() {
     }
   }
 
+  const handleEmailSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.email < b.email ? 1 : -1)));
+      setEmailOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.email > b.email ? 1 : -1)));
+      setEmailOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.email > b.email ? 1 : -1)));
+      setEmailOrder("descending");
+    }
+  }
+
   return (
     <div className="App">
       <Hero />
@@ -85,6 +101,8 @@ function App() {
         handleNameSort={handleNameSort}        
         phoneOrder={phoneOrder}
         handlePhoneSort={handlePhoneSort}
+        emailOrder={emailOrder}
+        handleEmailSort={handleEmailSort}
       />
     </div>
   );

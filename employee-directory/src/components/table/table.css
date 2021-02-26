@@ -9,3 +9,7 @@ thead th {
 .phone-header {
   cursor: pointer;
 }
+
+.email-header {
+  cursor: pointer;
+}

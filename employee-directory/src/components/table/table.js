@@ -10,7 +10,7 @@ function Table(props) {
           <th>Image</th>
           <th className="name-header" onClick={props.handleNameSort} data-value={props.nameOrder}>Name <i className="fas fa-sort"></i></th>
           <th className="phone-header" onClick={props.handlePhoneSort} data-value={props.phoneOrder}>Phone <i className="fas fa-sort"></i></th>
-          <th>Email</th>
+          <th className="email-header" onClick={props.handleEmailSort} data-value={props.emailOrder}>Email <i className="fas fa-sort"></i> </th>
           <th>DOB</th>
         </tr>
       </thead>
