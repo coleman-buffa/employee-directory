@@ -14,6 +14,7 @@ function App() {
   const [nameOrder, setNameOrder] = useState("");
   const [phoneOrder, setPhoneOrder] = useState("");
   const [emailOrder, setEmailOrder] = useState("");
+  const [dobOrder, setDOBOrder] = useState("");
 
   useEffect(() => {
       loadEmps();  
@@ -88,6 +89,21 @@ function App() {
     }
   }
 
+  const handleDOBSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.dob < b.dob ? 1 : -1)));
+      setDOBOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.dob > b.dob ? 1 : -1)));
+      setDOBOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.dob > b.dob ? 1 : -1)));
+      setDOBOrder("descending");
+    }
+  }
+
   return (
     <div className="App">
       <Hero />
@@ -103,6 +119,8 @@ function App() {
         handlePhoneSort={handlePhoneSort}
         emailOrder={emailOrder}
         handleEmailSort={handleEmailSort}
+        dobOrder={dobOrder}
+        handleDOBSort={handleDOBSort}
       />
     </div>
   );
