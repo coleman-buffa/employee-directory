@@ -5,3 +5,15 @@ thead th {
 .name-header {
   cursor: pointer;
 }
+
+.phone-header {
+  cursor: pointer;
+}
+
+.email-header {
+  cursor: pointer;
+}
+
+.dob-header {
+  cursor: pointer;
+}

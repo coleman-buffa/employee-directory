@@ -11,8 +11,10 @@ function App() {
   const [emps, setEmps] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterEmps, setFilterEmps] = useState([]);
-  const [sortOrder, setSortOrder] = useState("");
-  //Add additional states to track sorting of each field
+  const [nameOrder, setNameOrder] = useState("");
+  const [phoneOrder, setPhoneOrder] = useState("");
+  const [emailOrder, setEmailOrder] = useState("");
+  const [dobOrder, setDOBOrder] = useState("");
 
   useEffect(() => {
       loadEmps();  
@@ -42,18 +44,63 @@ function App() {
     loadEmpsByName();
   };
 
-  const handleSort = event => {
+  const handleNameSort = event => {
     let sort = event.target.getAttribute("data-value");
 
     if (sort === "descending") {
       setEmps(emps.sort((a,b)=> (a.empname < b.empname ? 1 : -1)));
-      setSortOrder("ascending");
+      setNameOrder("ascending");
     } else if ( sort === "ascending") {
       setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
-      setSortOrder("descending");
+      setNameOrder("descending");
     } else {
       setEmps(emps.sort((a,b)=> (a.empname > b.empname ? 1 : -1)));
-      setSortOrder("descending");
+      setNameOrder("descending");
+    }
+  }
+
+  const handlePhoneSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.phone < b.phone ? 1 : -1)));
+      setPhoneOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.phone > b.phone ? 1 : -1)));
+      setPhoneOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.phone > b.phone ? 1 : -1)));
+      setPhoneOrder("descending");
+    }
+  }
+
+  const handleEmailSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.email < b.email ? 1 : -1)));
+      setEmailOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.email > b.email ? 1 : -1)));
+      setEmailOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.email > b.email ? 1 : -1)));
+      setEmailOrder("descending");
+    }
+  }
+
+  const handleDOBSort = event => {
+    let sort = event.target.getAttribute("data-value");
+
+    if (sort === "descending") {
+      setEmps(emps.sort((a,b)=> (a.dob < b.dob ? 1 : -1)));
+      setDOBOrder("ascending");
+    } else if ( sort === "ascending") {
+      setEmps(emps.sort((a,b)=> (a.dob > b.dob ? 1 : -1)));
+      setDOBOrder("descending");
+    } else {
+      setEmps(emps.sort((a,b)=> (a.dob > b.dob ? 1 : -1)));
+      setDOBOrder("descending");
     }
   }
 
@@ -66,8 +113,14 @@ function App() {
       />
       <Table
         filterEmps={filterEmps}
-        handleSort={handleSort}
-        sortOrder={sortOrder}
+        nameOrder={nameOrder}
+        handleNameSort={handleNameSort}        
+        phoneOrder={phoneOrder}
+        handlePhoneSort={handlePhoneSort}
+        emailOrder={emailOrder}
+        handleEmailSort={handleEmailSort}
+        dobOrder={dobOrder}
+        handleDOBSort={handleDOBSort}
       />
     </div>
   );
