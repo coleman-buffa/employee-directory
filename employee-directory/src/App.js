@@ -40,8 +40,7 @@ function App() {
   };
 
   const handleInputChange = event => {
-    setSearchTerm(event.target.value.toLowerCase());
-    loadEmpsByName();
+    setSearchTerm(event.target.value.toLowerCase());  
   };
 
   const handleNameSort = event => {
