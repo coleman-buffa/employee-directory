@@ -12,6 +12,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterEmps, setFilterEmps] = useState([]);
   const [sortOrder, setSortOrder] = useState("");
+  //Add additional states to track sorting of each field
 
   useEffect(() => {
       loadEmps();  

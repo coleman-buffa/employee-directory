@@ -1,3 +1,7 @@
 thead th {
   text-align: center;
 }
+
+.name-header {
+  cursor: pointer;
+}

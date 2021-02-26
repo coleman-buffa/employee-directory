@@ -8,7 +8,7 @@ function Table(props) {
       <thead>
         <tr>
           <th>Image</th>
-          <th onClick={props.handleSort} data-value={props.sortOrder}>Name</th>
+          <th className="name-header" onClick={props.handleSort} data-value={props.sortOrder}>Name <i className="fas fa-sort"></i></th>
           <th>Phone</th>
           <th>Email</th>
           <th>DOB</th>
